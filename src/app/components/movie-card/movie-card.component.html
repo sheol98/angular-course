@@ -1,20 +1,25 @@
-<div class="card__container">
-  <div class="card__img">
-    <img [src]="data.imgUrl" alt="{{ data.title }}" />
-  </div>
-  <div class="card__text">
-    <h3 class="card__title">{{ data.title }}</h3>
-    <p class="card__about">{{ data.about }}</p>
-    <p class="card__rating">Рейтинг {{ data.rating }} ★</p>
-    <p class="card__time">Тривалість {{ data.time | formatNumber }}</p>
-  </div>
-  <div class="card__actions">
-    <button class="card__favorite" (click)="onAddToFavorite()">
-      Додати до улюблених
-    </button>
-    <button class="card__watch-list" (click)="onAddToWatchList()">
-      Додати до перегляду пізніше
-    </button>
-  </div>
-  
-</div>
+<p-card [style]="{ width: '360px' }">
+  <ng-template pTemplate="header">
+    <img class="card__img" alt="{{ data.title }}" [src]="data.imgUrl" />
+  </ng-template>
+  <h3 class="card__title">{{ data.title }}</h3>
+  <p class="card__about">{{ data.about }}</p>
+  <p>Rating: {{ data.rating }}</p>
+  <p>Time: {{data.time | formatNumber}}</p>
+  <ng-template pTemplate="footer">
+    <div
+      class="flex gap-3 mt-1"
+      styleClass="card__actions"
+      [style]="{ display: 'flex', gap: '3px' }"
+    >
+      <p-button
+        label="add to favorite list"
+        class="w-full"
+        styleClass="w-full"
+        (onClick)="onAddToFavorite()"
+      />
+      <p-button label="add to watch list" class="w-full" styleClass="w-full" (onClick)="onAddToWatchList()"/>
+    </div>
+  </ng-template>
+</p-card>
+

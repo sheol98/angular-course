@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { CommonModule } from '@angular/common';
+import { CardModule } from 'primeng/card';
+
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.scss',
-  imports: [MovieCardComponent, CommonModule],
+  imports: [MovieCardComponent, CommonModule,CardModule],
 })
 export class MovieListComponent {
   favoriteList: any[] = [];
@@ -42,16 +44,11 @@ export class MovieListComponent {
     },
   ];
 
-  pushToFavorite(item: any) {
-    if (!this.favoriteList.includes(item)) this.favoriteList.push(item);
+  addToFavorite(movie: any) {
+    if (!this.favoriteList.includes(movie)) this.favoriteList.push(movie);
+    console.log(this.favoriteList);
   }
-  pushToWatchList(item: any) {
-    if (!this.watchList.includes(item)) this.watchList.push(item);
-  }
-  deleteMovieInFavorite(movie: any) {
-    this.favoriteList = this.favoriteList.filter((el) => el.id !== movie.id);
-  }
-  deleteMovieInWatchList(movie: any) {
-    this.watchList = this.watchList.filter((el) => el.id !== movie.id);
+  addToWatchList(movie: any) {
+    if (!this.watchList.includes(movie)) this.watchList.push(movie);
   }
 }

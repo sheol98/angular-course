@@ -1,41 +1,8 @@
-.cards__container {
+.cards__container{
   display: flex;
+  gap: 5px;
 }
-.card {
-  // .card__container
-
-  &__container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid gray;
-    padding: 5px;
-  }
-
-  // .card__img
-
-  &__img {
-    max-width: 70px;
-    img {
-      max-width: 100%;
-    }
-  }
-
-  // .card__text
-
-  &__text {
-  }
-
-  // .card__title
-
-  &__title {
-  }
-
-  // .card__about
-
-  &__about {
-  }
-  &__delete{
-    padding: 5px;
-  }
+.card__img{
+  height: 300px;
+  width: 300px;
 }

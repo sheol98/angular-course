@@ -1,47 +1,26 @@
 <div class="cards__container">
-  @for (movie of movies; track movie) {
+  @for (item of movies; track $index) {
   <app-movie-card
-    [data]="movie"
-    (addToFavorite)="pushToFavorite(movie)"
-    (addToWatchList)="pushToWatchList(movie)"
+    [data]="item"
+    (addToFavorite)="addToFavorite(item)"
+    (addToWatchList)="addToWatchList(item)"
   ></app-movie-card>
   }
 </div>
 
-@if (favoriteList.length>0) {
-<h2>Список улюблених фільмів</h2>
-<div class="favorite__movies">
-  @for (movie of favoriteList; track $index) {
-  <div class="card__container">
-    <div class="card__img">
-      <img [src]="movie.imgUrl" alt="{{ movie.title }}" />
-    </div>
-    <div class="card__text">
-      <h3 class="card__title">{{ movie.title }}</h3>
-      <p class="card__about">{{ movie.about }}</p>
-    </div>
-    <button class="card__delete" (click)="deleteMovieInFavorite(movie)">
-      Видалити
-    </button>
-  </div>
-  }
-</div>
-} @if (watchList.length>0) {
-<h2>Список фільмів дивитися пізніше</h2>
-<div class="favorite__movies">
-  @for (movie of watchList; track $index) {
-  <div class="card__container">
-    <div class="card__img">
-      <img [src]="movie.imgUrl" alt="{{ movie.title }}" />
-    </div>
-    <div class="card__text">
-      <h3 class="card__title">{{ movie.title }}</h3>
-      <p class="card__about">{{ movie.about }}</p>
-    </div>
-    <button class="card__delete" (click)="deleteMovieInWatchList(movie)">
-      Видалити
-    </button>
-  </div>
-  }
-</div>
-}
+@if (favoriteList.length >0) {
+<h2>Favorite list</h2>
+@for (item of favoriteList; track $index) {
+<p-card header="{{ item.title }}" [style]="{ display: 'flex' }">
+  <img [src]="item.imgUrl" alt="" class="card__img" />
+  <p class="favorit-card__about">{{ item.about }}</p>
+</p-card>
+} }
+@if (watchList.length >0) {
+<h2>Watch list</h2>
+@for (item of watchList; track $index) {
+<p-card header="{{ item.title }}" [style]="{ display: 'flex' }">
+  <img [src]="item.imgUrl" alt="" class="card__img" />
+  <p class="favorit-card__about">{{ item.about }}</p>
+</p-card>
+} }

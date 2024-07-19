@@ -1,8 +1,9 @@
-.cards__container{
+.page-wrapper{
   display: flex;
-  gap: 5px;
+  flex-wrap: wrap;
+  max-width: 1270px;
+  justify-content: space-around;
 }
-.card__img{
-  height: 300px;
-  width: 300px;
+.movie{
+  margin-bottom: 20px;
 }

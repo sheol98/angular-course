@@ -1,11 +1,10 @@
-<p-card [style]="{ width: '360px' }">
+<p-card [style]="{ width: '310px' }">
   <ng-template pTemplate="header">
-    <img class="card__img" alt="{{ data.title }}" [src]="data.imgUrl" />
+    <img class="card__img" alt="{{ data.title }}" [src]="data.poster_path" />
   </ng-template>
   <h3 class="card__title">{{ data.title }}</h3>
-  <p class="card__about">{{ data.about }}</p>
-  <p>Rating: {{ data.rating }}</p>
-  <p>Time: {{data.time | formatNumber}}</p>
+  <p class="card__about">{{ data.overview }}</p>
+  <p>Rating: {{ data.popularity }}</p>
   <ng-template pTemplate="footer">
     <div
       class="flex gap-3 mt-1"
@@ -16,10 +15,14 @@
         label="add to favorite list"
         class="w-full"
         styleClass="w-full"
-        (onClick)="onAddToFavorite()"
+        (onClick)="onAddToFavorite(data)"
       />
-      <p-button label="add to watch list" class="w-full" styleClass="w-full" (onClick)="onAddToWatchList()"/>
+      <p-button
+        label="add to watch list"
+        class="w-full"
+        styleClass="w-full"
+        (onClick)="onAddToWatchList(data)"
+      />
     </div>
   </ng-template>
 </p-card>
-

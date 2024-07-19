@@ -1,26 +1,5 @@
-<div class="cards__container">
-  @for (item of movies; track $index) {
-  <app-movie-card
-    [data]="item"
-    (addToFavorite)="addToFavorite(item)"
-    (addToWatchList)="addToWatchList(item)"
-  ></app-movie-card>
+<div class="page-wrapper">
+  @for (movie of movieList; track movie.id) {
+  <app-movie-card class="movie" [data]="movie"> </app-movie-card>
   }
 </div>
-
-@if (favoriteList.length >0) {
-<h2>Favorite list</h2>
-@for (item of favoriteList; track $index) {
-<p-card header="{{ item.title }}" [style]="{ display: 'flex' }">
-  <img [src]="item.imgUrl" alt="" class="card__img" />
-  <p class="favorit-card__about">{{ item.about }}</p>
-</p-card>
-} }
-@if (watchList.length >0) {
-<h2>Watch list</h2>
-@for (item of watchList; track $index) {
-<p-card header="{{ item.title }}" [style]="{ display: 'flex' }">
-  <img [src]="item.imgUrl" alt="" class="card__img" />
-  <p class="favorit-card__about">{{ item.about }}</p>
-</p-card>
-} }
